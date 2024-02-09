@@ -1,10 +1,40 @@
+import { Post } from "@customTypes/post";
+import React from "react";
+import PromptCard from "./PromptCard";
 
-const Profile = () => {
-  return (
-    <div>
-      
-    </div>
-  )
+interface ProfileProp {
+  name: string;
+  desc: string;
+  data: Post[];
+  handleEdit: (any) => void;
+  handleDelete: (any) => void;
 }
+const Profile: React.FC<ProfileProp> = ({
+  name,
+  desc,
+  data,
+  handleDelete,
+  handleEdit,
+}) => {
+  return (
+    <section className="w-full">
+      <h1 className="head_text text-left">
+        <span className="blue_gradient">{name} Profile</span>
+      </h1>
+      <p className="desc text-left">{desc}</p>
 
-export default Profile
+      <div className="mt-10 prompt_layout">
+        {data?.map((post) => (
+          <PromptCard
+            key={post._id}
+            post={post}
+            handleEdit={() => handleEdit && handleEdit(post)}
+            handleDelete={() => handleDelete && handleDelete(post)}
+          />
+        ))}
+      </div>
+    </section>
+  );
+};
+
+export default Profile;

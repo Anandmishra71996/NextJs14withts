@@ -39,7 +39,9 @@ const Nav = () => {
             <Link href="/create-prompt" className="black_btn">
               Create Post
             </Link>
-            <button className="outline_btn">Sign Out</button>
+            <button className="outline_btn" onClick={() => signOut()}>
+              Sign Out
+            </button>
             <Link href="/profile">
               <Image
                 src={session?.user?.image}
@@ -81,7 +83,9 @@ const Nav = () => {
                 <Link href="/profile" className="dropdown_link">
                   Profile
                 </Link>
-                <button className="black_btn">Sign Out</button>
+                <button className="black_btn" onClick={() => signOut()}>
+                  Sign Out
+                </button>
               </div>
             )}
           </div>

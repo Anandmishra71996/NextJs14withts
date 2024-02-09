@@ -1,11 +1,17 @@
 import { Schema, model, models } from "mongoose";
 
-const userSchema= new Schema({
-    email:{
-        type:String,
-        unique:[true,'Email already exists']
-    }
-})
+const userSchema = new Schema({
+  email: {
+    type: String,
+    unique: [true, "Email already exists"],
+  },
+  username: {
+    type: String,
+  },
+  image: {
+    type: String,
+  },
+});
 
-const User= models.User || model("User",userSchema)
+const User = models.User || model("User", userSchema);
 export default User;

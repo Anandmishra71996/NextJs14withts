@@ -5,7 +5,7 @@ import { NextApiRequest, NextApiResponse } from "next";
 export const GET = async (req: Request) => {
   try {
     await connectToDB();
-    let Prompts = await Prompt.find();
+    let Prompts = await Prompt.find({}).populate("creator");
     return new Response(JSON.stringify(Prompts), { status: 201 });
   } catch (error) {
     console.log(error);
